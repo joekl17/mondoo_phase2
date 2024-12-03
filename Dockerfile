@@ -13,7 +13,7 @@ RUN curl -L \
     -H "X-GitHub-Api-Version: 2022-11-28" \
     $DOWNLOAD_URL -o app.tar.gz && \
     tar -xzf app.tar.gz && \
-    mv mondoo-phase1 /app/app_binary && \
+    mv mondoo_phase1 /app/app_binary && \
     chmod +x /app/app_binary
 
 FROM --platform=linux/amd64 alpine:latest AS application
