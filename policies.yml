@@ -1,0 +1,29 @@
+policies:
+  - uid: mondoo-test
+    name: Dockerfile test
+    version: 1.0.0
+    authors:
+      - name: JK
+        email: jk@me.com
+    groups:
+        - title: Docker Container Security
+          filters: |
+              asset.platform == "dockerfile"
+          checks:
+              - uid: mondoo-check-port
+              - uid: mondoo-check-binary-location
+            
+queries:
+  - uid: mondoo-check-port
+    title: check port
+    impact: 100
+    mql: |
+      firstStageIdentifier = docker.file.stages[0].from.image
+      docker.file.stages.where(from.image != firstStageIdentifier).all(expose.all(port == 8080))
+  - uid: mondoo-check-binary-location
+    title: check binary location
+    impact: 100
+    mql: |
+      firstStageIdentifier = docker.file.stages[0].from.image
+      docker.file.stages.where(from.image != firstStageIdentifier).all(copy.all(dst == "/app/app_binary"))
+  

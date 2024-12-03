@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mondoo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mondoo
+  template:
+    metadata:
+      labels:
+        app: mondoo
+    spec:
+      containers:
+      - name: mondoo
+        image: ghcr.io/joekl17/mondoo-phase2:v1.0.0
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mondoo-service
+spec:
+  selector:
+    app: mondoo
+  ports:
+  - port: 8080
+    targetPort: 8080
+  type: ClusterIP
