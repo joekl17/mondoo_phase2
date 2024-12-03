@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: mondoo
-        image: ghcr.io/joekl17/mondoo-phase2:v1.0.0
+        image: ghcr.io/joekl17/mondoo_phase2:v1.0.0
         ports:
         - containerPort: 8080
 ---
