@@ -65,4 +65,4 @@ jobs:
             DOWNLOAD_URL=${{ needs.generate-variable.outputs.download_url }} 
           push: true
           platforms: linux/amd64
-          tags: ghcr.io/joekl17/mondoo-phase2:${{ github.event.client_payload.release_tag }}
+          tags: ghcr.io/joekl17/mondoo_phase2:${{ github.event.client_payload.release_tag }}
